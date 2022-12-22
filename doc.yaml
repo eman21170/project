@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      label-name-1: label-value
+      another-label: my-app-name
+  template:
+    metadata:
+      name: webapp-pod
+      labels:
+        app: webapp-pod
+        label-name-1: label-value
+        another-label: my-app-name
+    spec:
+      containers:
+        - image: habiba2002/image
+          name: webapp-container
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests:
+              memory: "100Mi" 
+
+
+
+
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: my-first-app
+# spec:
+#   containers:
+#     - image: habibagb2002/nginx
+#       name: my-nginx-app
+#       imagePullPolicy: IfNotPresent
+#       resources:
+#             limits:
+#               memory: "512Mi"
+#               cpu: "1"
+            
+     
+#       ports:
+#         - containerPort: 80     
+    
